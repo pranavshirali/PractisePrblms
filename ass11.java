@@ -40,4 +40,28 @@ public class ass11 {
         else return 0;
     }
     
+    //Problem No.3
+    public static int findCelebrity(int N, int[][] M) {
+        int candidate = 0;
+
+        // Eliminate candidates who know others
+        for (int i = 1; i < N; i++) {
+            if (knows(candidate, i, M)) {
+                candidate = i;
+            }
+        }
+
+        // Verify if remaining candidate is known by everyone
+        for (int i = 0; i < N; i++) {
+            if (i != candidate && (knows(candidate, i, M) || !knows(i, candidate, M))) {
+                return -1; // No celebrity found
+            }
+        }
+
+        return candidate;
+    }
+
+    public static boolean knows(int a, int b, int[][] M) {
+        return M[a][b] == 1;
+    }
 }
