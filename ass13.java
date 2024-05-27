@@ -5,7 +5,6 @@ import java.util.Stack;
 public class ass13 {
 
     public static int romanToInt(String s) {
-        // Create a map to store Roman numeral values
         Map<Character, Integer> romanMap = new HashMap<>();
         romanMap.put('I', 1);
         romanMap.put('V', 5);
@@ -21,12 +20,9 @@ public class ass13 {
         for (int i = 0; i < length; i++) {
             int currentVal = romanMap.get(s.charAt(i));
 
-            // Check if the current character is less than the next character
             if (i < length - 1 && currentVal < romanMap.get(s.charAt(i + 1))) {
-                // If the current value is less than the next value, subtract it
                 total -= currentVal;
             } else {
-                // Otherwise, add the current value
                 total += currentVal;
             }
         }
@@ -38,11 +34,9 @@ public class ass13 {
         int m = matrix.length;
         int n = matrix[0].length;
         
-        // Create arrays to keep track of rows and columns to be zeroed
         boolean[] rows = new boolean[m];
         boolean[] cols = new boolean[n];
         
-        // First pass: mark the rows and columns that need to be zeroed
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == 0) {
@@ -52,7 +46,6 @@ public class ass13 {
             }
         }
         
-        // Second pass: set the marked rows and columns to zero
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (rows[i] || cols[j]) {
